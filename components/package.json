@@ -1,0 +1,38 @@
+{
+  "name": "icon-animate-xxl",
+  "version": "0.1.0",
+  "description": "Icon animations for react-native compatible with oblador vector-icons",
+  "main": "IconAnimate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emajidev/icon-animate-xxl.git"
+  },
+  "keywords": [
+    "icon-animate",
+    "react",
+    "native",
+    "react",
+    "native",
+    "icon",
+    "animate",
+    "animate",
+    "icon",
+    "rn",
+    "rn",
+    "icon",
+    "animate",
+    "icon",
+    "motion",
+    "react",
+    "native"
+  ],
+  "author": "Emanuel Jimenez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emajidev/icon-animate-xxl/issues"
+  },
+  "homepage": "https://github.com/emajidev/icon-animate-xxl#readme"
+}
