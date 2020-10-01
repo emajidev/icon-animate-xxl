@@ -1,6 +1,9 @@
 {
   "name": "icon-animate-xxl",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "description": "Icon animations for react-native compatible with oblador vector-icons",
   "main": "IconAnimate.js",
   "scripts": {

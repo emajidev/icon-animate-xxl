@@ -1,84 +1,37 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Animated, Text, View, StyleSheet, Button } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+
+import {explode,styleAnimate,styleDoppelganger} from "./animations/explode"
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
-
-export default function IconAnimate() {
-  // fadeAnim will be used as the value for opacity. Initial Value: 0
-  const sizeAnimate = useRef(new Animated.Value(1)).current;
-  const explotion = useRef(new Animated.Value(0)).current;
-
-  const SizeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
-    Animated.parallel([
-      Animated.sequence([
-        Animated.timing(explotion, {
-          toValue: 1,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-        Animated.timing(explotion, {
-          toValue: 0,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-      ]),
-
-      Animated.sequence([
-        Animated.timing(sizeAnimate, {
-          toValue: 1.5,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-        Animated.timing(sizeAnimate, {
-          toValue: 0.2,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(sizeAnimate, {
-          toValue: 1.2,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-        Animated.timing(sizeAnimate, {
-          toValue: 1,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(sizeAnimate, {
-          toValue: 0.9,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(sizeAnimate, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-      ]),
-    ]).start();
+export default function IconAnimate(props) {
+  const [motion, setMotion] = useState();
+  const name = props.name;
+  const color = props.color;
+  const size = props.size;
+  const doppelganger = props.doppelganger;
+  const animation = props.animation;
+    const motionList = {
+    explode: explode,
   };
-
   return (
     <View style={styles.container}>
+      {doppelganger && (
+        <AnimatedIcon
+          name={doppelganger}
+          size={size+15}
+          style={[
+            styles.explode,styleDoppelganger
+                     ]}
+          color={color}
+        />
+      )}
       <AnimatedIcon
-        name="heart-o"
-        size={100}
-        style={[
-          styles.explode,
-          {
-            transform: [{ scale: explotion }],
-            opacity: explotion,
-          },
-        ]}
-        color="#f45"
-      />
-      <AnimatedIcon
-        name="heart"
-        style={{ transform: [{ scale: sizeAnimate }] }}
-        color="#f45"
-        size={50}
-        onPress={SizeIn}
+        name={name}
+        color={color}
+        size={size}
+        style={[styleAnimate]}
+        onPress={motionList.[animation]}
       />
     </View>
   );
